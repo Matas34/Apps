@@ -1,0 +1,111 @@
+import random
+
+print('Good luck!')
+
+
+def repeat():
+    guess = ''
+    lifelines = 6
+    correct_guesses = []
+    incorrect_guesses = []
+    for_some_reason_doesnt_work_properly_unless_in_while_loop = 1
+
+    phases = {
+        6: ''' +---+
+ O   |
+/|\  |
+/ \  |''',
+
+        5: ''' +---+
+ O   |
+/|\  |
+/    |''',
+
+        4: ''' +---+
+ O   |
+/|\  |
+     |''',
+
+        3: ''' +---+
+ O   |
+/|   |
+     |''',
+
+        2: ''' +---+
+ O   |
+ |   |
+     |''',
+
+        1: ''' +---+
+ O   |
+     |
+     |''',
+
+        0: ''' +---+
+     |
+     |
+     |''',
+
+    }
+
+    words = ['word', 'samsung', 'game', 'dog', 'cat', 'nonsense', 'computer', 'sound', 'water', 'cake', 'cheese', 'tea']
+
+    word = random.choice(words).upper()
+
+    print(phases.get(lifelines))
+
+    while for_some_reason_doesnt_work_properly_unless_in_while_loop == 1:
+        for letter in range(len(word)):
+            print('_', end=' ')
+            for_some_reason_doesnt_work_properly_unless_in_while_loop = 0
+
+    while lifelines > 0:
+        win_tester = 0
+
+        guessing = True
+        while guessing == True:
+
+            guess = input('Choose a letter: ').upper()
+
+            if guess in word:
+                correct_guesses.append(guess)
+                guessing = False
+
+            elif guess in incorrect_guesses:
+                print('You already tried that. Try again!')
+
+            elif guess not in word:
+                incorrect_guesses.append(guess)
+                lifelines -= 1
+                guessing = False
+
+        print('Your incorrect guesses: ', end='')
+        for i in incorrect_guesses:
+            print(i, end='; ')
+
+        print(phases.get(lifelines))
+
+        for letter in word:
+            if guess in letter or letter in correct_guesses:
+                print(letter, end=' ')
+            if guess not in letter and letter not in correct_guesses:
+                print('_', end=' ')
+                win_tester += 1
+
+        if win_tester == 0:
+            print('You won!')
+            break
+
+    if win_tester > 0:
+        print(phases.get(0))
+        print('Out of lives! You lost!')
+        print('The word was: ' + word.upper())
+
+    check_if_play = input('Do you want to play again? (Y/N)')
+    if check_if_play.upper() == 'Y':
+        repeat()
+    else:
+        print('Thank you for playing!')
+
+
+repeat()
