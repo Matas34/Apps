@@ -85,7 +85,7 @@ def repeat():
         for i in incorrect_guesses:
             print(i, end='; ')
 
-        print('')
+        print('') #spacing
 
         print(phases.get(lifelines))
 
