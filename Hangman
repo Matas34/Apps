@@ -59,6 +59,8 @@ def repeat():
             print('_', end=' ')
             for_some_reason_doesnt_work_properly_unless_in_while_loop = 0
 
+    print('')  # spacing
+
     while lifelines > 0:
         win_tester = 0
 
@@ -83,7 +85,11 @@ def repeat():
         for i in incorrect_guesses:
             print(i, end='; ')
 
+        print('')
+
         print(phases.get(lifelines))
+
+        print('')  # spacing
 
         for letter in word:
             if guess in letter or letter in correct_guesses:
@@ -91,6 +97,8 @@ def repeat():
             if guess not in letter and letter not in correct_guesses:
                 print('_', end=' ')
                 win_tester += 1
+
+        print('')  # spacing
 
         if win_tester == 0:
             print('You won!')
@@ -101,6 +109,9 @@ def repeat():
         print('Out of lives! You lost!')
         print('The word was: ' + word.upper())
 
+    print('')  # spacing
+    print('')  # spacing
+    print('')  # spacing
     check_if_play = input('Do you want to play again? (Y/N)')
     if check_if_play.upper() == 'Y':
         repeat()
